@@ -1,0 +1,14 @@
+{
+    "networking": {
+        "port": 8000,
+        "routes": {
+            "prefix": "/api/v1",
+            "routes": {
+                "index": "/",
+                "predictions": "/predictions/<string:stock>",
+                "parametrized_predictions": "/predictions/<string:stock>/<int:lookahead_timesteps>",
+                "models": "/<string:stock>"
+            }
+        }
+    }
+}
