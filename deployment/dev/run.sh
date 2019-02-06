@@ -1,4 +1,4 @@
 cd ./venv/
 source bin/activate
 cd ../src/
-python main.py
+python main.py -c ./app_config.json

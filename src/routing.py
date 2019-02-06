@@ -24,9 +24,9 @@ class FileRouteBuilder(RouteBuilder):
 
 
 class DictRouteBuilder(RouteBuilder):
-    def __init__(self, routing_dict, route_prefix=""):
-        self.route_prefix = route_prefix
+    def __init__(self, routing_dict):
         self.routing_dict = routing_dict
 
     def create(self, key):
-        return self.route_prefix + self.routing_dict[key]
+        return self.routing_dict['prefix'] + \
+               self.routing_dict['routes'][key]
