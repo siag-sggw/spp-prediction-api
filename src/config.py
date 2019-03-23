@@ -18,4 +18,4 @@ class JsonConfigLoader(ConfigLoader):
                 return self.config
         except IOError as e:
             raise IOError("""Couldn't load config file.
-                            Error message ${e}""")
+                            Error message {e}""")
