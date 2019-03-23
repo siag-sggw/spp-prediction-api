@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd ./venv/
 source bin/activate
 cd ../src/

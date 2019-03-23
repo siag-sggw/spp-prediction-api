@@ -1,1 +1,3 @@
-docker build --rm -t spp_api:dev .
+#!/bin/bash
+
+docker build --rm --no-cache -t spp_api:dev .
