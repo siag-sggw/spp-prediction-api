@@ -1,15 +1,13 @@
 {
     "debug": true,
     "networking": {
+        "host": "0.0.0.0",
         "port": 8000,
         "routes": {
-            "prefix": "/api/v1",
-            "routes": {
-                "index": "/",
-                "predictions": "/predictions/<string:stock>",
-                "parametrized_predictions": "/predictions/<string:stock>/<int:lookahead_timesteps>",
-                "models": "/<string:stock>"
-            }
+            "index": "/api/v1/",
+            "predictions": "/api/v1/predictions/<string:stock>",
+            "parametrized_predictions": "/api/v1/predictions/<string:stock>/<int:lookahead_timesteps>",
+            "models": "/api/v1/<string:stock>"
         }
     }
 }
