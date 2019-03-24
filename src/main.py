@@ -1,7 +1,7 @@
 import cli
 
-from application import TornadoApplication
-from config import JsonConfigLoader
+from application import SPPApi
+from config import Config
 from routing import DictRouteBuilder
 
 import os
@@ -13,10 +13,7 @@ if __name__ == "__main__":
               .parse_args()
 
     # Load application configuration
-    config = JsonConfigLoader(args.configuration).load()
-
-    # Get the application routes
-    routes = config['networking']['routes']
+    config = Config().load(args.configuration)
     
     # Start the application
-    TornadoApplication(config, DictRouteBuilder(routes)).run()
+    SPPApi(config, DictRouteBuilder(config.routes)).run()
