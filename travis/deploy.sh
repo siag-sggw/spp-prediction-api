@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DOCKER_REPOSITORY='kowalikjakub/spp_api:dev'
+docker tag spp_api:dev $DOCKER_REPOSITORY
 
 echo "Deploying branch ${TRAVIS_BRANCH}"
 docker login -p $DOCKER_PASSWORD -u $DOCKER_USERNAME
