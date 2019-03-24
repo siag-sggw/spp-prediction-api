@@ -10,12 +10,10 @@ branches:
    - master
    - develop
 
-before_script:
-  - chmod +x travis/configure.sh
-  - travis/configure.sh
-
 script:
+  - chmod +x travis/configure.sh
   - chmod +x travis/build.sh
+  - travis/configure.sh
   - travis/build.sh
 
 deploy:
