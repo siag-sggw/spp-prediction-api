@@ -25,6 +25,7 @@ class Config(object):
         self.debug = config['debug']
         self.routes = config['networking']['routes']
         self.port = config['networking']['port']
+        self.host = config['networking']['host']
         return self
 
 

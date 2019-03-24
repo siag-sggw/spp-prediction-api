@@ -22,9 +22,10 @@ class SPPApi(Application):
                  route_builder):
         super().__init__(config)
         self.route_builder = route_builder
-        self.app = tornado.web.Application([
+        self.app = tornado.web.Application(handlers=[
             (self.route_builder.create('index'), Index)
         ],
+            default_host=self.config.host,
             debug=self.config.debug,
             default_handler_class=NotFoundErrorHandler)
         self.app.listen(config.port)

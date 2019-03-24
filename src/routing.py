@@ -28,5 +28,4 @@ class DictRouteBuilder(RouteBuilder):
         self.routing_dict = routing_dict
 
     def create(self, key):
-        return self.routing_dict['prefix'] + \
-               self.routing_dict['routes'][key]
+        return self.routing_dict[key]

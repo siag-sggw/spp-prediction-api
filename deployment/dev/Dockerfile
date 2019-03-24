@@ -4,8 +4,8 @@ FROM python:3.6-alpine3.8
 RUN apk update && \
     apk upgrade && \
     apk add bash git && \
-    mkdir -m 664 -p /app/src && \
-    git clone -b feauture/deployment --single-branch https://github.com/siag-sggw/spp-prediction-api.git /app
+    mkdir -m 664 /app && \
+    git clone -b develop --single-branch https://github.com/KowalikJakub/spp-prediction-api.git /app
 
 # Copy app configuration
 COPY ./app_config.json /etc/spp_api_config.json
