@@ -11,7 +11,6 @@ branches:
    - develop
 
 script:
-  - pwd
   - chmod +x travis/configure.sh
   - chmod +x travis/build.sh
   - travis/configure.sh
@@ -20,3 +19,6 @@ script:
 deploy:
   provider: script
   script: bash travis/deploy.sh
+  on:
+    branch: master
+    branch: develop
