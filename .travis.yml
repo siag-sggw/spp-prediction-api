@@ -1,0 +1,24 @@
+language: ruby
+
+dist: trusty
+
+services: 
+  - docker
+
+branches:
+  only:
+   - master
+   - develop
+
+script:
+  - chmod +x travis/configure.sh
+  - chmod +x travis/build.sh
+  - travis/configure.sh
+  - travis/build.sh
+
+deploy:
+  provider: script
+  script: bash travis/deploy.sh
+  on:
+    branch: master
+    branch: develop
