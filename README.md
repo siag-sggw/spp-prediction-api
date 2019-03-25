@@ -1,6 +1,8 @@
 # Stock Price Prediction API
 This project was made for Team Project classes at the Faculty of Applied Informatics and Mathematics at the Warsaw University of Life Sciences.
 
+[![Build Status](https://travis-ci.com/KowalikJakub/spp-prediction-api.svg?branch=master)](https://travis-ci.com/KowalikJakub/spp-prediction-api)
+
 ## Building the project
 You can build the project as a docker container or just run locally:
 
