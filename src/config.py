@@ -14,18 +14,34 @@ class ConfigLoader(object):
 
 
 class Config(object):
+    current = None
     def __init__(self):
         self.debug = None
+
+        # Networking
         self.routes = None
         self.port = None
+        self.host = None
+        
+        #NN Model
+        self.h5_folder = None
+
+        # Stock API
+        self.stock_api = None
     
     def load(self, file_path):
         config = ConfigLoader.create(file_path).load()
 
         self.debug = config['debug']
+        
         self.routes = config['networking']['routes']
         self.port = config['networking']['port']
         self.host = config['networking']['host']
+
+        self.h5_folder = config['h5_location']
+        self.stock_api = config['stock_api']
+
+        Config.current = self # Set the new config to be accessible as a static variable
         return self
 
 

@@ -1,8 +1,8 @@
 import tornado.ioloop
 import tornado.web
 
-from request_handlers.api import Index
-from request_handlers.errors import NotFoundErrorHandler
+from src.request_handlers.rest_api import Index, Predict
+from src.request_handlers.errors import NotFoundErrorHandler
 
 
 class Application(object):
@@ -23,7 +23,8 @@ class SPPApi(Application):
         super().__init__(config)
         self.route_builder = route_builder
         self.app = tornado.web.Application(handlers=[
-            (self.route_builder.create('index'), Index)
+            (self.route_builder.create('index'), Index),
+            (self.route_builder.create('predictions'), Predict)
         ],
             default_host=self.config.host,
             debug=self.config.debug,

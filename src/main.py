@@ -1,15 +1,15 @@
-import cli
+import src.cli
 
-from application import SPPApi
-from config import Config
-from routing import DictRouteBuilder
+from src.application import SPPApi
+from src.config import Config
+from src.routing import DictRouteBuilder
 
 import os
 
 
 if __name__ == "__main__":
     # Create parser and get user args
-    args = cli.create_parser() \
+    args = src.cli.create_parser() \
               .parse_args()
 
     # Load application configuration
