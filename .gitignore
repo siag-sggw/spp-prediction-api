@@ -5,4 +5,5 @@ venv/
 .ipynb_checkpoints
 app_config.json
 .VSCodeCounter/
-notebooks/data/*.csv
+.vscode/
+notebooks/data/
