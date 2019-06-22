@@ -1,9 +1,9 @@
-FROM python:3.6-alpine3.8
+FROM centos:centos7
 
 # Donwload project
-RUN apk update && \
-    apk upgrade && \
-    apk add bash git && \
+RUN yum update && \
+    yum upgrade && \
+    yum install bash git && \
     mkdir -m 664 /app && \
     git clone -b develop --single-branch https://github.com/KowalikJakub/spp-prediction-api.git /app
 

@@ -1,21 +1,23 @@
-FROM python:3.6-alpine3.8
+FROM centos:centos7
 
 # Donwload project
-RUN apk update && \
-    apk upgrade && \
-    apk add bash && \
+RUN yum update -y && \
+    yum upgrade -y && \
+    yum install -y gcc make openssl-devel bzip-devel libffi-devel wget && \
+    yum install -y https://centos7.iuscommunity.org/ius-release.rpm && \
+    yum update -y && \
+    yum install -y python36u python36u-libs python36u-devel python36u-pip && \
     mkdir -m 664 -p /app/src
 
 # Copy the source files
-COPY src/ /app/src
+COPY ./ /app/
 
 # Copy app configuration
 COPY ./app_config.json /etc/spp_api_config.json
 
 # Install dependencies
-COPY ./requirements.txt /app
-RUN pip install $(cat /app/requirements.txt)
+RUN pip3.6 install $(cat /app/requirements.txt)
 
-EXPOSE 8000
+WORKDIR /app/
 
-ENTRYPOINT python /app/src/main.py -c /etc/spp_api_config.json
+ENTRYPOINT python3.6 /app/src/main.py -c /etc/spp_api_config.json
