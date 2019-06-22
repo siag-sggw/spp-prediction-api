@@ -1,40 +1,41 @@
 import tornado.web
-import models.api
+import re
+
+class ApplicationContexAwareRequestHandler(tornado.web.RequestHandler):
+    def initialize(self, app_context):
+        self.app_context = app_context
 
 
-class Index(tornado.web.RequestHandler):
+class Index(ApplicationContexAwareRequestHandler):
     def get(self):
         self.write({
             'message': 'Hello there!'
         })
 
 
-class Predict(tornado.web.RequestHandler):
+class Predict(ApplicationContexAwareRequestHandler):
     def get(self):
-        model = models.api.KerasPredictor()
-
         stock_name = self.get_argument('stock')
-        if not stock_name:
-            self.set_status(400)
-            return self.finish("Invalid request")
+        
+        if not(stock_name and self.__validate_argument(stock_name)):
+            self.__raise_http_400()
+            return
 
-        look_ahead = 1
-        try:
-            given_look_ahead = self.get_argument('look_ahead')
-            print(given_look_ahead)
-
-            if look_ahead:
-                look_ahead = given_look_ahead
-        except tornado.web.MissingArgumentError:
-            pass
-
+        pipeline = self.app_context.model_registry.get_pipeline_by_id(stock_name)
         self.write({
-            'stock': model.do(stock_name, look_ahead=look_ahead),
+            'predicted': pipeline.predict(stock_name)
         })
 
+    def __validate_argument(self, stock_name):
+        return stock_name in self.app_context.model_registry.get_available_pipelines_ids()
 
-class ListAvailableModels(tornado.web.RequestHandler):
+    def __raise_http_400(self):
+        self.set_status(400)
+        self.finish({'message': 'Invalid request, check available models'})
+
+
+class ListAvailableModels(ApplicationContexAwareRequestHandler):
     def get(self):
-        local_models = list(map(lambda path: path.replace('.h5', ''),
-                                models.api.LocalModelListing().get()))
-        self.write({'availableModels': local_models})
+        self.write({
+            'availableModels': self.app_context.model_registry.get_available_pipelines_ids()
+        })

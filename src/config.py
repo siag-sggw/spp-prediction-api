@@ -28,7 +28,7 @@ class Config(object):
         self.host = None
 
         # NN Model
-        self.h5_folder = None
+        self.estimator_directory = None
 
         # Stock API
         self.stock_api = None
@@ -41,9 +41,6 @@ class Config(object):
         self.routes = config['networking']['routes']
         self.port = config['networking']['port']
         self.host = config['networking']['host']
-
-        self.h5_folder = config['h5_location']
-        self.stock_api = config['stock_api']
 
         # Set the new config to be accessible as a static variable
         Config.current = self
