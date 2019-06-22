@@ -23,4 +23,3 @@ deploy:
   script: bash travis/deploy.sh
   on:
     branch: master
-    branch: develop
