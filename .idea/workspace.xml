@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="681ae257-521f-4fcf-9cb3-b8cccd9957fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/jakkowalik.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/spp-prediction-api.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/core.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/exceptions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/.ropeproject/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/.ropeproject/objectdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/tasks.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/application.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/api.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request_handlers/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request_handlers/errors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/request_handlers/rest_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/request_handlers/rest_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/data/test_ConfigLoader/invalid_config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/data/test_ConfigLoader/valid_config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tests/test_ConfigLoader.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/neural_networks/aapl-1.h5" beforeDir="false" afterPath="$PROJECT_DIR$/static/aapl/neural_networks/1.h5" afterDir="false" />
-    </list>
+    <list default="true" id="681ae257-521f-4fcf-9cb3-b8cccd9957fb" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,14 +43,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/request_handlers/rest_api.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="22" column="81" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
+            <state relative-caret-position="125">
+              <caret line="19" column="67" selection-start-line="19" selection-start-column="67" selection-end-line="19" selection-end-column="67" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.travis.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="14" lean-forward="true" selection-start-column="14" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -147,6 +130,11 @@
               <item name="spp-prediction-api" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="request_handlers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spp-prediction-api" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spp-prediction-api" type="462c0819:PsiDirectoryNode" />
+              <item name="travis" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -250,23 +238,23 @@
       <workItem from="1560377154478" duration="3006000" />
       <workItem from="1561040142410" duration="785000" />
       <workItem from="1561114083901" duration="6387000" />
-      <workItem from="1561194032007" duration="8846000" />
+      <workItem from="1561194032007" duration="9155000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22005000" />
+    <option name="totallyTimeSpent" value="22314000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-180" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989775" visible="true" weight="0.21618743" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989775" visible="true" weight="0.21618743" />
       <window_info id="Structure" order="1" sideWeight="0.5010225" side_tool="true" weight="0.29041487" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32923833" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.24547283" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.24547283" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.32696176" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -479,11 +467,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/request_handlers/rest_api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="22" column="81" selection-start-line="22" selection-start-column="81" selection-end-line="22" selection-end-column="81" />
+        <state relative-caret-position="125">
+          <caret line="19" column="67" selection-start-line="19" selection-start-column="67" selection-end-line="19" selection-end-column="67" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="14" lean-forward="true" selection-start-column="14" selection-end-column="14" />
         </state>
       </provider>
     </entry>
