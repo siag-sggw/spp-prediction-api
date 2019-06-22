@@ -2,30 +2,48 @@ import json
 import re
 import logging as log
 
+
 class ConfigLoader(object):
     def load(self):
         pass
 
     @staticmethod
     def create(file_path):
+        if not isinstance(file_path, str):
+            raise ValueError("Expected path to be: {0} instead got {1}"
+                             .format(str, type(file_path)))
         if '.json' in file_path:
             return JsonConfigLoader(file_path)
 
 
-
 class Config(object):
+    current = None
+
     def __init__(self):
         self.debug = None
+
+        # Networking
         self.routes = None
         self.port = None
-    
+        self.host = None
+
+        # NN Model
+        self.estimator_directory = None
+
+        # Stock API
+        self.stock_api = None
+
     def load(self, file_path):
         config = ConfigLoader.create(file_path).load()
 
         self.debug = config['debug']
+
         self.routes = config['networking']['routes']
         self.port = config['networking']['port']
         self.host = config['networking']['host']
+
+        # Set the new config to be accessible as a static variable
+        Config.current = self
         return self
 
 

@@ -1,37 +1,43 @@
+import os
 import tornado.ioloop
 import tornado.web
-
-from request_handlers.api import Index
+from request_handlers.rest_api import Index, Predict, ListAvailableModels
 from request_handlers.errors import NotFoundErrorHandler
+
+import models
+import routing
 
 
 class Application(object):
-    def __init__(self, config):
-        self.config = config
+    def before_run(self):
+        raise models.exceptions.AbstractClassUsageError
 
     def run(self):
-        pass
+        raise models.exceptions.AbstractClassUsageError
 
-    def terminate(self):
-        pass
+
+class ApplicationContext(object):
+    def __init__(self,
+                 configuration):
+        self.configuration = configuration
+        self.model_registry = models.StockPricePipelineRegistry()
 
 
 class SPPApi(Application):
-    def __init__(self,
-                 config,
-                 route_builder):
-        super().__init__(config)
-        self.route_builder = route_builder
+    def __init__(self, ctx):
+        super().__init__()
+        self.app_context = ctx
+
+        self.route_builder = routing.DictRouteBuilder(self.app_context.configuration.routes)
         self.app = tornado.web.Application(handlers=[
-            (self.route_builder.create('index'), Index)
+            (self.route_builder.create('index'), Index, dict(app_context=self.app_context)),
+            (self.route_builder.create('predictions'), Predict, dict(app_context=self.app_context)),
+            (self.route_builder.create('availableModels'), ListAvailableModels, dict(app_context=self.app_context))
         ],
-            default_host=self.config.host,
-            debug=self.config.debug,
+            default_host=self.app_context.configuration.host,
+            debug=self.app_context.configuration.debug,
             default_handler_class=NotFoundErrorHandler)
-        self.app.listen(config.port)
 
     def run(self):
+        self.app.listen(self.app_context.configuration.port)
         tornado.ioloop.IOLoop.current().start()
-
-    def terminate(self):
-        pass

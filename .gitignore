@@ -4,3 +4,6 @@ venv/
 .DS_Store
 .ipynb_checkpoints
 app_config.json
+.VSCodeCounter/
+.vscode/
+notebooks/data/

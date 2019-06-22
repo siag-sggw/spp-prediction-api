@@ -25,10 +25,10 @@ You can build the project as a docker container or just run locally:
         "host": "0.0.0.0",
         "port": 8000,
         "routes": {
-            "index": "<your route>",
-            "predictions": "<your route>",
-            "parametrized_predictions": "<your route>",
-            "models": "<your route>"
+            "index": "/api/v1/",
+            "predictions": "/api/v1/stock_price",
+            "models": "/api/v1/stocks",
+            "availableModels": "/api/v1/availableModels"
         }
     }
 }
