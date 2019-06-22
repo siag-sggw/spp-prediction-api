@@ -1,0 +1,2 @@
+class AbstractClassUsageError(Exception):
+    pass
