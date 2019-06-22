@@ -3,6 +3,11 @@ This project was made for Team Project classes at the Faculty of Applied Informa
 
 [![Build Status](https://travis-ci.com/siag-sggw/spp-prediction-api.svg?branch=master)](https://travis-ci.com/siag-sggw/spp-prediction-api)
 
+## Usage
+
+- ```/api/v1/stock_price?stock=<stock_name>``` returns the predicted price for the next day
+- ```/api/v1/availableModels``` lists all available models
+
 ## Building the project
 You can build the project as a docker container or just run locally:
 
@@ -27,7 +32,6 @@ You can build the project as a docker container or just run locally:
         "routes": {
             "index": "/api/v1/",
             "predictions": "/api/v1/stock_price",
-            "models": "/api/v1/stocks",
             "availableModels": "/api/v1/availableModels"
         }
     }
