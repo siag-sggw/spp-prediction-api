@@ -11,6 +11,7 @@ then
     docker push $DOCKER_REPOSITORY
 elif [ $TRAVIS_BRANCH == 'develop' ]
 then
+
     docker tag spp_api:dev $DOCKER_REPOSITORY
     docker push "$DOCKER_REPOSITORY:dev"
 else
