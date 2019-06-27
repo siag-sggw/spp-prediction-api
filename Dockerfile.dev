@@ -1,19 +1,27 @@
 FROM centos:centos7
 
 # Donwload project
-RUN yum update && \
-    yum upgrade && \
-    yum install bash git && \
-    mkdir -m 664 /app && \
-    git clone -b develop --single-branch https://github.com/KowalikJakub/spp-prediction-api.git /app
+RUN yum update -y && \
+    yum upgrade -y && \
+    yum install -y gcc make openssl-devel bzip-devel libffi-devel wget && \
+    yum install -y https://centos7.iuscommunity.org/ius-release.rpm && \
+    yum update -y && \
+    yum install -y python36u python36u-libs python36u-devel python36u-pip && \
+    mkdir -m 664 -p /app/src
+
+# Copy the source files
+COPY ./ /app/
 
 # Copy app configuration
 COPY ./app_config.json /etc/spp_api_config.json
 
+# Copy ssl files
+COPY ./ssl/server.cert /app/ssl/server.cert
+COPY ./ssl/server.key /app/ssl/server.key
+
 # Install dependencies
-COPY ./requirements.txt /app
-RUN pip install $(cat /app/requirements.txt)
+RUN pip3.6 install $(cat /app/requirements.txt)
 
-EXPOSE 8000
+WORKDIR /app/
 
-ENTRYPOINT python /app/src/main.py -c /etc/spp_api_config.json
+ENTRYPOINT python3.6 /app/src/main.py -c /etc/spp_api_config.json

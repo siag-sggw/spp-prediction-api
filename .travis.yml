@@ -1,25 +1,16 @@
-language: python
-python:
-  - "3.7"
-
+language: ruby
 dist: xenial
-
-services: 
-  - docker
-
+services:
+- docker
 branches:
   only:
-   - master
-   - develop
-
+  - master
+  - develop
 script:
-  - chmod +x travis/configure.sh
-  - chmod +x travis/build.sh
-  - travis/configure.sh
-  - travis/build.sh
-
-deploy:
-  provider: script
-  script: bash travis/deploy.sh
-  on:
-    branch: master
+- openssl aes-256-cbc -K $encrypted_f6131722843d_key -iv $encrypted_f6131722843d_iv -in ssl.tar.gz.enc -out ssl.tar.gz -d
+- tar -xzvf ssl.tar.gz
+- chmod +x travis/configure.sh
+- chmod +x travis/build.sh
+- travis/configure.sh
+- travis/build.sh
+- travis/deploy.sh

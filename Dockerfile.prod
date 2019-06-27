@@ -15,6 +15,10 @@ COPY ./ /app/
 # Copy app configuration
 COPY ./app_config.json /etc/spp_api_config.json
 
+# Copy ssl files
+COPY ./ssl/server.cert /app/ssl/server.cert
+COPY ./ssl/server.key /app/ssl/server.key
+
 # Install dependencies
 RUN pip3.6 install $(cat /app/requirements.txt)
 

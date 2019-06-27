@@ -1,4 +1,4 @@
-import os
+import ssl
 import tornado.ioloop
 import tornado.web
 from request_handlers.rest_api import Index, Predict, ListAvailableModels
@@ -38,6 +38,14 @@ class SPPApi(Application):
             debug=self.app_context.configuration.debug,
             default_handler_class=NotFoundErrorHandler)
 
+        ssl_context = ssl.create_default_context(ssl.Purpose.CLIENT_AUTH)
+        ssl_context.options |= (
+                ssl.OP_NO_TLSv1 | ssl.OP_NO_TLSv1_1 | ssl.OP_NO_COMPRESSION
+        )
+        ssl_context.set_ciphers("ECDHE+AESGCM")
+        ssl_context.load_cert_chain('ssl/server.cert', 'ssl/server.key')
+        self.server = tornado.web.HTTPServer(self.app, ssl_options=ssl_context)
+
     def run(self):
-        self.app.listen(self.app_context.configuration.port)
+        self.server.listen(self.app_context.configuration.port)
         tornado.ioloop.IOLoop.current().start()

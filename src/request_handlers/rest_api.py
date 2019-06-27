@@ -1,7 +1,15 @@
 import tornado.web
 import re
 
-class ApplicationContexAwareRequestHandler(tornado.web.RequestHandler):
+
+class BaseRequestHandler(tornado.web.RequestHandler):
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
+        self.set_header('Access-Control-Allow-Methods', 'POST, GET')
+
+
+class ApplicationContexAwareRequestHandler(BaseRequestHandler):
     def initialize(self, app_context):
         self.app_context = app_context
 
@@ -16,8 +24,8 @@ class Index(ApplicationContexAwareRequestHandler):
 class Predict(ApplicationContexAwareRequestHandler):
     def get(self):
         stock_name = self.get_argument('stock')
-        
-        if not(stock_name and self.__validate_argument(stock_name)):
+
+        if not (stock_name and self.__validate_argument(stock_name)):
             self.__raise_http_400()
             return
 

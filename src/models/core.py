@@ -33,7 +33,7 @@ class IEXProvider(StockDataProvider):
         return price
 
     def __current_price_endpoint(self, stock_name):
-        return "https://cloud.iexapis.com/beta/stock/{0}/quote?token=pk_68faf40447a04a129a4b45b974b1ac2a" \
+        return "https://cloud.iexapis.com/beta/stock/{0}/quote?token=pk_72c946f9fa884fde8abbe6b7e2ed4a3d" \
             .format(stock_name)
 
 

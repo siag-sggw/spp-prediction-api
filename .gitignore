@@ -7,3 +7,7 @@ app_config.json
 .VSCodeCounter/
 .vscode/
 notebooks/data/
+ssl/
+server.cert
+server.key
+ssl.tar.gz

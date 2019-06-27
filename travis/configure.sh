@@ -1,7 +1,6 @@
 #!/bin/bash
 
 CONF_DIR="${TRAVIS_BUILD_DIR}/app_config.json"
-echo "Configuring build for branch ${TRAVIS_BRANCH}, configuration directory: ${CONF_DIR}"
 
 if [ $TRAVIS_BRANCH == 'master' ]
 then
