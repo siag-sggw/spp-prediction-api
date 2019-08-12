@@ -9,5 +9,6 @@ app_config.json
 notebooks/data/
 ssl/
 server.cert
+server.crt
 server.key
 ssl.tar.gz

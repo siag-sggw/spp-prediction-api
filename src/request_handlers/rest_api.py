@@ -1,6 +1,8 @@
 import tornado.web
-import re
+import concurrent.futures
+from tornado.concurrent import run_on_executor
 
+_executor = concurrent.futures.ProcessPoolExecutor()
 
 class BaseRequestHandler(tornado.web.RequestHandler):
     def set_default_headers(self):
@@ -22,7 +24,9 @@ class Index(ApplicationContexAwareRequestHandler):
 
 
 class Predict(ApplicationContexAwareRequestHandler):
-    def get(self):
+    _process_pool = _executor
+
+    async def get(self):
         stock_name = self.get_argument('stock')
 
         if not (stock_name and self.__validate_argument(stock_name)):
@@ -30,8 +34,11 @@ class Predict(ApplicationContexAwareRequestHandler):
             return
 
         pipeline = self.app_context.model_registry.get_pipeline_by_id(stock_name)
+
+        predicted_price = await self.__predict(pipeline, stock_name)
+
         self.write({
-            'predicted': pipeline.predict(stock_name)
+            'predicted': predicted_price
         })
 
     def __validate_argument(self, stock_name):
@@ -40,6 +47,10 @@ class Predict(ApplicationContexAwareRequestHandler):
     def __raise_http_400(self):
         self.set_status(400)
         self.finish({'message': 'Invalid request, check available models'})
+
+    @run_on_executor(executor='_process_pool')
+    def __predict(self, pipeline, stock_name):
+        return pipeline.predict(stock_name)
 
 
 class ListAvailableModels(ApplicationContexAwareRequestHandler):
