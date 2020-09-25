@@ -1,5 +1,5 @@
 tornado==6.0.1
-tensorflow==1.13.1
+tensorflow==1.15.4
 keras==2.2.4
 requests==2.21.0
 numpy==1.16.3
