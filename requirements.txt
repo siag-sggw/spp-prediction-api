@@ -1,4 +1,4 @@
-tornado==6.0.1
+tornado==6.3.2
 tensorflow==1.13.1
 keras==2.2.4
 requests==2.21.0
